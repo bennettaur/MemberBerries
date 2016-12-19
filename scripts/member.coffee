@@ -25,12 +25,15 @@ suggestMemories = ["Member oldMemory?", "Hey, member oldMemory?", "Yeah! Member 
 member = (res) ->
     memory = res.match[1].trim()
 
+    if (memory == "")
+        return
+
     memoryIndex = memories.indexOf(memory)
     if (memoryIndex < 0)
         res.send "I member!"
         usedMemories = []
     else
-        response = responses[Math.floor(Math.random() * responses.length)]
+        response = res.random responses
         res.send response.replace("newMemory", memory)
         usedMemories = [memoryIndex]
 
@@ -41,7 +44,14 @@ member = (res) ->
         if (usedMemories.indexOf(oldMemoryIndex) < 0)
             oldMemory = memories[oldMemoryIndex]
             usedMemories.push(oldMemoryIndex)
-            res.send suggestMemories[Math.floor(Math.random() * suggestMemories.length)].replace("oldMemory", oldMemory)
+            suggestMemory = res.random suggestMemories
+            res.send suggestMemory.replace("oldMemory", oldMemory)
+
+    if (res.message.user.name == "tom")
+        if (Math.floor(Math.random() * 100) > 40)
+            res.send "@tom Member when you stole @michael's Star Wars mug?"
+        else
+            res.send "@tom We're going to f*@king kill you, member?"
 
     if (memories.indexOf(memory) < 0)
         memories.push(memory)
