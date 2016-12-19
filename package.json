@@ -1,9 +1,9 @@
 {
-  "name": "NostalgiaBot",
+  "name": "MemberBerries",
   "version": "0.0.0",
   "private": true,
-  "author": "Martin Petkov <mpetkov@securitycompass.com>",
-  "description": "A bot to remind us of our dear lost interns",
+  "author": "Bennettaur <bennettaur@gmail.com>",
+  "description": "Member?",
   "dependencies": {
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.1",
